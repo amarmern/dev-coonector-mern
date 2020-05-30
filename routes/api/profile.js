@@ -68,16 +68,28 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      profileFields.skills = skills.split(',').map((skill) => skill.trim());
+      profileFields.skills = skills
+        .toString()
+        .split(',')
+        .map((skill) => skill.trim());
     }
 
     //Buld socail object
-    profileFields.socail = {};
-    if (youtube) profileFields.socail.youtube = youtube;
-    if (twitter) profileFields.socail.twitter = twitter;
-    if (facebook) profileFields.socail.facebook = facebook;
-    if (linkedin) profileFields.socail.linkedin = linkedin;
-    if (instagram) profileFields.socail.instagram = instagram;
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
+
+     // Build social object and add to profileFields
+    //  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+
+    //  for (const [key, value] of Object.entries(socialfields)) {
+    //    if (value && value.length > 0)
+    //      socialfields[key] = normalize(value, { forceHttps: true });
+    //  }
+    //  profileFields.social = socialfields;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

@@ -6,7 +6,8 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
-const User = require('../../models/User');
+const Post = require('../../models/Post');
+
 //@route GET api/profile/me
 //desc Get current user profile
 //@access Private
@@ -82,7 +83,7 @@ router.post(
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
 
-     // Build social object and add to profileFields
+    // Build social object and add to profileFields
     //  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
 
     //  for (const [key, value] of Object.entries(socialfields)) {
@@ -155,7 +156,8 @@ router.get('/user/:user_id', async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
   try {
-    //@todo - remove user posts
+    //Remove user posts
+    await Post.deleteMany({ user: req.user.id });
     //Remove Profile
     await Profile.findOneAndRemove({ user: req.user.id });
     //Remove User

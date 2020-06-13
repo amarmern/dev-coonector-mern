@@ -10,7 +10,6 @@ import {
   GET_PROFILES,
   GET_REPOS
 } from './types';
-import Alert from '../components/layout/Alert';
 
 //Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {

@@ -9,7 +9,7 @@ import PostForm from './PostForm';
 function Posts({ getPosts, post: { posts, loading } }) {
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [getPosts]);
 
   return loading ? (
     <Spinner />

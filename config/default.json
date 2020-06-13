@@ -1,5 +1,6 @@
 {
-    "mongoURI": "mongodb+srv://amar123:amar123@devconnector-a6erl.mongodb.net/test?retryWrites=true&w=majority",
+    "mongoURIOLD": "mongodb+srv://amar123:amar123@devconnector-a6erl.mongodb.net/test?retryWrites=true&w=majority",
+    "mongoURI": "mongodb://localhost:/devconnector",
     "jwtSecret": "mysecretetoken",
     "githubClientId": "6af64dd98b7a18d81355",
     "githubSecret": "d81ef282b8e461663d4b7d1ca2fa1c189648507c"
